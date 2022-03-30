@@ -19,7 +19,7 @@
 
 ## Tasks to do
 
-1. Download the data in a zip folder from [here](https://www.vut.cz/www_base/vutdisk.php?i=286941a8ec). Extract the content of the zip folder into **Lecture7** folder. It contains folder **Cats** with 5 images *catX.jpg*.
+1. Download the data in a zip folder from [here](https://www.vut.cz/www_base/vutdisk.php?i=286946a1bd). Extract the content of the zip folder into **Lecture7** folder. It contains folder **Cats** with 5 images *catX.jpg*.
 2. Load all 5 images from folder **Cats**.
 3. Optionally pre-process the images to a convenient form.
 4. Use any automatic segmentation method to distinguish the image area of cat(s) and the background.
