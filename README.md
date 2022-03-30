@@ -1,7 +1,7 @@
 # Lecture7 - SEGMENTATION
 
 
-[**Benchmark Results**](https://moodle.vut.cz/pluginfile.php/410380/mod_resource/content/1/L6_BenchmarkTracking.xlsx%20-%20List1.pdf)
+[**Benchmark Results**](https://docs.google.com/spreadsheets/d/1eVXez4Z985BxftOCF1nldSYCXMIimW3E/edit?usp=sharing&ouid=105272487043795807825&rtpof=true&sd=true)
 
 ## Preparation
 
