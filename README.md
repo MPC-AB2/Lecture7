@@ -1,8 +1,5 @@
 # Lecture7 - SEGMENTATION
 
-
-[**Benchmark Results**](https://docs.google.com/spreadsheets/d/1eVXez4Z985BxftOCF1nldSYCXMIimW3E/edit?usp=sharing&ouid=105272487043795807825&rtpof=true&sd=true)
-
 ## Preparation
 
 1. Run Git bash.
@@ -24,7 +21,7 @@
 3. Optionally pre-process the images to a convenient form.
 4. Use any automatic segmentation method to distinguish the image area of cat(s) and the background.
 5. Optionally use post-processing (e.g. proper morphological operations) to refine the segmentation results 
-6. Use the provided MATLAB function for evaluation of the results and submit the output to the provided Excel table. The function *Eval_Segmentation.p.p* called as:
+6. Use the provided MATLAB function for evaluation of the results and submit the output to the provided [**Excel**](https://docs.google.com/spreadsheets/d/1eVXez4Z985BxftOCF1nldSYCXMIimW3E/edit?usp=sharing&ouid=105272487043795807825&rtpof=true&sd=true) table. The function *Eval_Segmentation.p.p* called as:
 `[segmResults] = Eval_Segmentation(segmentedImage)`,
 has the following inputs and outputs:
   * segmentedImage – cell array (1x5) of logical-type masks with value 1 for the area of the cat and value 0 for the background. The dataset consists of 5 cats; hence the size of the cell array is 1x5. The order of the masks must respect the order of the cat.
