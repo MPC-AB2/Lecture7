@@ -1,6 +1,6 @@
 function [segmentedImages] = cobolaci(pathToImages)
-detector = maskrcnn("resnet50-coco",PoolSize = [13 13]);    
-    cd(pathToImages);
+detector = maskrcnn("resnet50-coco",PoolSize = [15 15]);    
+%     cd(pathToImages);
     a = dir('*.jpg');
     n = numel(a);
     segmentedImages = cell(1,n);
