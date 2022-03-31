@@ -62,7 +62,7 @@ function segmentedImage = ToNebudeFungovat(cesta)
     
     
     %         figure
-            imshow(BW)
+            %imshow(BW)
             
         
             %% Ulozeni
