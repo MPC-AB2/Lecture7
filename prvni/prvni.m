@@ -30,8 +30,12 @@ for i = 1:length(img_paths)
                 if u==y
                     continue
                 end
-                if sum(sum(((my_masks(:,:,u)+my_masks(:,:,y))==2)))==0
-                    indexy = [indexy, u, y];                
+                sum1 = sum(sum((my_masks(:,:,u))));
+                sum2 = sum(sum((my_masks(:,:,y))));
+                sum_overlap = sum(sum(((my_masks(:,:,u)+my_masks(:,:,y))==2)))/2;
+                disp((sum_overlap/(sum1 + sum2))*100)
+                if (sum_overlap/(sum1 + sum2))*100 < 1.3
+                    indexy = [indexy, u, y]; 
                 end
     
             end
