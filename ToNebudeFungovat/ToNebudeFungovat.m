@@ -1,7 +1,8 @@
 function segmentedImage = ToNebudeFungovat(cesta) 
 
     cesta_pom = cesta + "\*.jpg";
-    
+    detector = maskrcnn("resnet50-coco");
+
     files = dir(cesta_pom);
     n = length(files);  
     for i=1:n
@@ -14,7 +15,7 @@ function segmentedImage = ToNebudeFungovat(cesta)
     segmentedImage = {};
     
     for i=1:n
-        for qw =1:2
+%         for qw =1:2
             
             I = kocky{i};
         
@@ -26,16 +27,40 @@ function segmentedImage = ToNebudeFungovat(cesta)
         %     roi = images.roi.AssistedFreehand;
         %     draw(roi);
         %     mask = createMask(roi);
-            if qw ==1
-            [m,n,l] = size(I);
+            [m,n,~] = size(I);
+            [object,labels,~,~] = segmentObjects(detector,I,Threshold=0.95);
+           if(length(labels)>1)
+                if(sum(labels=="cat")>1)
+                    idx = find(labels=="cat");
+                    if (length(idx)>1)
+                        object = object(:,:,idx) ;
+                        object = sum(object,3); object(object>1) = 1;
+                    else
+                        object = object(:,:,idx);
+                    end
+                else
+                    R = round(m/2);
+                    S = round(n/2);
+                    px = 100;
+               
+                    object = zeros(size(I,1),size(I,2));
+                    object(R-px:R+px,S-px:S+px)= 1; 
+                end
+            end
+
+
+
+        
+            if isempty(object)
+          
             R = round(m/2);
             S = round(n/2);
-            px = 50;
+            px = 80;
            
                 object = zeros(size(I,1),size(I,2));
                 object(R-px:R+px,S-px:S+px)= 1; 
             else
-               object = segmentedImage{i} ;
+               object = double(imerode(object,strel("disk",80)));
             end
         
         
@@ -45,7 +70,7 @@ function segmentedImage = ToNebudeFungovat(cesta)
             % J = regionfill(I, combinedMask);
         
         
-            o = 0.15;
+            o = 0.12;
             backgr = ones(size(I,1),size(I,2));
             backgr(round(o*m):round((1-o)*m),round(o*n):round((1-o)*n))= 0;
         %     
@@ -67,15 +92,29 @@ function segmentedImage = ToNebudeFungovat(cesta)
         
             %% Ulozeni
             segmentedImage{i} = BW;
-        end
-    
+%         end
     end
     
 %     [segmResults] = Eval_Segmentation(segmentedImage)
 
 end
+% detector = maskrcnn("resnet50-coco");
+% 
+% 
+%
 
 
+% I = imread("Cats\cat1.jpg");
+% 
+% 
+% 
+% 
+% [masks,labels,scores,boxes] = segmentObjects(detector,I,Threshold=0.80);
+% 
+% 
+% overlayedImage = insertObjectMask(I,masks);
+% imshow(overlayedImage)
+% showShape("rectangle",boxes,Label=labels,LineColor=[1 0 0])
 
 
 
