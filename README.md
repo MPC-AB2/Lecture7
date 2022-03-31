@@ -1,5 +1,7 @@
 # Lecture7 - IMAGE SEGMENTATION
 
+[**Benchmark Results**](https://moodle.vut.cz/pluginfile.php/411642/mod_resource/content/1/L7_BenchmarkSegmentation.xlsx%20-%20List1.pdf)
+
 ## Preparation
 
 1. Run Git bash.
