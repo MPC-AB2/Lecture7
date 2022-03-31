@@ -1,4 +1,4 @@
-# Lecture7 - SEGMENTATION
+# Lecture7 - IMAGE SEGMENTATION
 
 ## Preparation
 
