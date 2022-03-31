@@ -3,7 +3,7 @@ function [segmentedImages] = Radiologove(pathToImages)
 addpath(pathToImages)
 files = dir([pathToImages '\*.jpg']);
 nfiles = size(files,1);
-results = cell(1,nfiles);
+segmentedImages = cell(1,nfiles);
 
 %% Define RCNN
 detector = maskrcnn("resnet50-coco");
@@ -31,6 +31,6 @@ for i = 1:nfiles
         mask2(suma==1) = 1;
     end
 %     imshow(mask2)
-    results{1,i} = mask2;
+    segmentedImages{1,i} = mask2;
 end
 end
