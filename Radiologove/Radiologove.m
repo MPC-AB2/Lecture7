@@ -13,8 +13,11 @@ detector = maskrcnn("resnet50-coco");
 for i = 1:nfiles
     pic = imread(files(i).name);
     I = pic;
+    r = round(size(I,1)*0.25);
+    c = round(size(I,2)*0.25);
+    I = padarray(I, [r c], 0, 'both');
     mask = [];
-    [masks,labels,scores,boxes] = segmentObjects(detector,pic,Threshold=0.55);
+    [masks,labels,scores,boxes] = segmentObjects(detector,I,Threshold=0.55);
     idx = labels=='cat';
     mask = masks(:,:,idx);        
     box = boxes(idx,:);
@@ -31,6 +34,7 @@ for i = 1:nfiles
         mask2(suma==1) = 1;
     end
 %     imshow(mask2)
+    mask2 = mask2(r+1:size(mask2,1)-r, c+1:size(mask2,2)-c);
     segmentedImages{1,i} = mask2;
 end
 end
