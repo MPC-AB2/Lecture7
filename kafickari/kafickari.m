@@ -17,7 +17,7 @@ obr = {};
     obr{k}= imread(filename);
     obr{k} = padarray(obr{k},[300 300],0);
     
-    [masks{k},labels{k},scores{k},boxes{k}] = segmentObjects(detector,obr{k},Threshold=0.55);
+    [masks{k},labels{k},scores{k},boxes{k}] = segmentObjects(detector,obr{k},Threshold=0.50);
     tmp = labels{1,k};
     tmp = cellstr(tmp);
     idx = find(strcmp(tmp,'cat' ));   
