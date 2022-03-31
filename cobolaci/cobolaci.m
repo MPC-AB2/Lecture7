@@ -31,7 +31,7 @@ function [segmentedImages] = cobolaci(pathToImages)
         end
         segmentedIm = squeeze(sum(masks(:,:,f),3));
         segmentedIm(segmentedIm >1) = 1;
-        segmentedImages{i} = segmentedIm;
+        segmentedImages{i} = logical(segmentedIm);
 
     end
 
