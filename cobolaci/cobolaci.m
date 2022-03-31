@@ -1,5 +1,5 @@
 function [segmentedImages] = cobolaci(pathToImages)
-detector = maskrcnn("resnet50-coco");    
+detector = maskrcnn("resnet50-coco",PoolSize = [13 13]);    
     cd(pathToImages);
     a = dir('*.jpg');
     n = numel(a);
@@ -9,12 +9,12 @@ detector = maskrcnn("resnet50-coco");
         nonCat = 0;
         I = imread(['cat' num2str(i) '.jpg']);
 %         cat = imresize(I,[800 1200]);
-        t = 0.55;
+        t = 0.6;
         [masks,labels,scores,boxes] = segmentObjects(detector,I,Threshold = t);
        
         f = find(labels == 'cat');
         while isempty(f) == 1
-            t = t-0.5;
+            t = t-0.05;
             [masks,labels,scores,boxes] = segmentObjects(detector,I,t);
             f = find(labels == 'cat');
                 if t == 0.05
